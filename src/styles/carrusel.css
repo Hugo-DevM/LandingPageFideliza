@@ -1,0 +1,64 @@
+.carrusel {
+    margin: 100px auto;
+    width: 90%;
+    display: flex;
+    overflow-x: auto;
+}
+
+.carrusel::-webkit-scrollbar {
+    display: none;
+}
+
+.content-card {
+    width: 100%;
+    flex: 0 0 40em;
+    margin: 2rem auto 0;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    animation: spin 40s infinite linear;
+    padding-right: 1em;
+}
+
+.card {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+@keyframes spin {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: -100%;
+    }
+}
+
+@media(max-width: 799px) {
+    .carrusel {
+        margin: 100px auto;
+        width: 90%;
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .content-card {
+        flex: 0 0 25em;
+        padding: .4rem;
+    }
+
+    .card {
+        max-height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+}
