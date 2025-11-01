@@ -17,16 +17,11 @@
     animation: spin 40s infinite linear;
 }
 
-.content-card {
-    border-radius: 20px;
-    overflow: hidden;
-}
 
 .card {
     flex: 0 0 40em;
     height: 40em;
     padding: 1em;
-    border-radius: 1rem;
 }
 
 @keyframes spin {
@@ -36,5 +31,18 @@
 
     to {
         translate: -100%;
+    }
+}
+
+@media (max-width: 800px) {
+    .card {
+        flex: 0 0 85vw;
+        height: auto;
+        max-height: 300px;
+        padding: 0.4em;
+    }
+
+    .content-card {
+        border-radius: 12px;
     }
 }
