@@ -1,7 +1,5 @@
 @import "./variables.css";
 
-/* --- Base (MOBILE FIRST) --- */
-
 .benefits {
     display: flex;
     flex-direction: column;
@@ -92,7 +90,6 @@
     font-size: 18px;
 }
 
-/* --- Tablet (>= 768px) --- */
 @media (min-width: 768px) {
     .benefits-title {
         font-size: 2.4rem;
@@ -109,7 +106,6 @@
     }
 }
 
-/* --- Desktop (>= 1024px) --- */
 @media (min-width: 1024px) {
     .benefits {
         display: flex;
