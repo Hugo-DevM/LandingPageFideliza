@@ -34,7 +34,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 899px) {
     .card {
         flex: 0 0 85vw;
         height: auto;
