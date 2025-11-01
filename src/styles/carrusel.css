@@ -1,45 +1,54 @@
+.Carrusel-Container {
+    margin-bottom: 4rem;
+}
+
 .carrusel {
-    margin: 100px auto;
+    margin: 20px auto;
     width: 90%;
-    display: flex;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    gap: 1rem;
+    background-color: aqua;
 }
 
 .carrusel::-webkit-scrollbar {
     display: none;
 }
 
+.group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    will-change: transform;
+}
+
 .content-card {
-    width: 100%;
-    flex: 0 0 auto;
-    margin: 2rem auto 0;
+    flex: 0 0 85vw;
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-}
-
-.group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-    animation: spin 40s infinite linear;
-    -webkit-animation: spin 40s infinite linear;
-    padding-right: 1em;
-    will-change: transform;
-    flex-wrap: nowrap;
+    scroll-snap-align: start;
 }
 
 .card {
-    max-width: 100%;
-    flex-shrink: 0;
+    width: 100%;
+    height: auto;
     display: block;
     object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 12px;
 }
 
-@keyframes spin {
+.swipe-hint {
+    display: flex;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+@keyframes marquee {
     from {
         transform: translateX(0);
     }
@@ -49,25 +58,23 @@
     }
 }
 
-@-webkit-keyframes spin {
-    from {
-        -webkit-transform: translateX(0);
+@media (min-width: 900px) {
+    .content-card {
+        flex: 0 0 40em;
     }
 
-    to {
-        -webkit-transform: translateX(-100%);
+    .group {
+        animation: marquee 40s linear infinite;
+    }
+
+    .swipe-hint {
+        display: none;
     }
 }
 
-@media(max-width: 799px) {
-    .content-card {
-        flex: 0 0 25em;
-        padding: .4rem;
-    }
-
-    .card {
-        max-height: 220px;
-        object-fit: cover;
-        border-radius: 12px;
+@media (max-width: 899px) {
+    .group {
+        animation: none !important;
+        transform: none !important;
     }
 }
