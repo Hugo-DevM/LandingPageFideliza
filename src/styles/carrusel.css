@@ -11,7 +11,6 @@
     scroll-snap-type: x mandatory;
     display: flex;
     gap: 1rem;
-    background-color: aqua;
 }
 
 .carrusel::-webkit-scrollbar {
