@@ -38,11 +38,7 @@
     .card {
         flex: 0 0 85vw;
         height: auto;
-        max-height: 300px;
+        max-height: 250px;
         padding: 0.4em;
-    }
-
-    .content-card {
-        border-radius: 12px;
     }
 }
