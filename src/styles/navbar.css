@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
     margin: 1rem 0;
 
 }
@@ -190,6 +189,10 @@ button[disabled] {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        position: static;
+    }
+
     .navbar-container {
         flex-wrap: wrap;
         padding: 0.5rem 1rem;
