@@ -1,10 +1,14 @@
 const modal = document.getElementById('form-modal');
-const openBtn = document.getElementById('open-modal');
 const closeBtn = document.getElementById('close-modal');
 const form = document.getElementById('waitlist-form');
 const submitBtn = form.querySelector('button[type="submit"]');
 
-openBtn.onclick = () => modal.style.display = 'flex';
+document.querySelectorAll('[data-modal="open"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+    });
+});
+
 closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; }
 
@@ -37,7 +41,7 @@ form.addEventListener('submit', async (e) => {
         });
 
         if (res.ok) {
-            showToast("¡Gracias por unirte! Te avisaremos lo mas pronto posible", "success");
+            showToast("¡Gracias por unirte! Te avisaremos lo más pronto posible", "success");
             e.target.reset();
             modal.style.display = "none";
         } else {
@@ -49,7 +53,6 @@ form.addEventListener('submit', async (e) => {
         console.error(err);
         showToast("Error al conectar con el servidor.", "error");
     } finally {
-
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalHTML;
     }

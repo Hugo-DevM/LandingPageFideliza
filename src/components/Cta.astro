@@ -1,5 +1,6 @@
 ---
 import "../styles/cta.css";
+import Modal from "./Modal.astro";
 ---
 
 <section class="cta-section">
@@ -10,6 +11,8 @@ import "../styles/cta.css";
                 Fideliza+</span
             >.
         </p>
-        <button class="navbar-btn" id="open-modal">Únete a la lista</button>
+        <button class="navbar-btn" data-modal="open">Únete a la lista</button>
     </div>
 </section>
+
+<Modal />
