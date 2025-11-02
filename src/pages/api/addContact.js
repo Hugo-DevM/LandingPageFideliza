@@ -8,9 +8,10 @@ export async function POST({ request }) {
             headers: {
                 accept: "application/json",
                 "content-type": "application/json",
-                "api-key": import.meta.env.BREVO_API_KEY,
+                "api-key": process.env.BREVO_API_KEY,
             },
             body: JSON.stringify({
+                email: `${phone}@fideliza.mx`,
                 attributes: {
                     NOMBRE: name,
                     TELEFONO: phone,
