@@ -21,23 +21,6 @@
     gap: .75rem;
 }
 
-/* .terms-links {
-    display: flex;
-    gap: 1.2rem;
-}
-
-.terms-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 14px;
-    border-bottom: 2px solid transparent;
-    transition: .3s;
-}
-
-.terms-links a:hover {
-    border-bottom-color: #fff;
-} */
-
 .terms-links a {
     position: relative;
     display: inline-block;
