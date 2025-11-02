@@ -15,7 +15,42 @@ import "../styles/navbar.css";
         </nav>
 
         <div class="navbar-right">
-            <button class="navbar-btn">Unete a la lista</button>
+            <button class="navbar-btn" id="open-modal">Unete a la lista</button>
         </div>
     </div>
 </header>
+
+<div id="form-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2 class="modal-title">Únete a la lista de espera</h2>
+
+        <form id="waitlist-form">
+            <label class="moda-subtitle">Nombre completo</label>
+            <input type="text" name="name" placeholder="Tu nombre" required />
+
+            <label class="moda-subtitle">Teléfono</label>
+            <input
+                type="tel"
+                name="phone"
+                placeholder="Tu número de teléfono"
+                required
+            />
+
+            <label class="moda-subtitle">Tipo de software</label>
+            <select name="preference" required>
+                <option value="" disabled selected>Selecciona una opción</option
+                >
+                <option value="web">Web</option>
+                <option value="mobile">Móvil</option>
+                <option value="desktop">Escritorio</option>
+            </select>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/modal.js" defer></script>
+
+<style></style>
