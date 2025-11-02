@@ -1,12 +1,12 @@
-const modal = document.getElementById('form-modal');
-const openBtn = document.getElementById('open-modal');
-const closeBtn = document.getElementById('close-modal');
-const form = document.getElementById('waitlist-form');
-const submitBtn = form.querySelector('button[type="submit"]');
+const modal2 = document.getElementById('form-modal2');
+const openBtn2 = document.getElementById('open-modal2');
+const closeBtn2 = document.getElementById('close-modal2');
+const form2 = document.getElementById('waitlist-form2');
+const submitBtn2 = form2.querySelector('button[type="submit"]');
 
-openBtn.onclick = () => modal.style.display = 'flex';
-closeBtn.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; }
+openBtn2.onclick = () => modal2.style.display = 'flex';
+closeBtn2.onclick = () => modal2.style.display = 'none';
+window.onclick = e => { if (e.target === modal2) modal2.style.display = 'none'; }
 
 function showToast(message, type = "success") {
     const toast = document.createElement("div");
@@ -21,13 +21,13 @@ function showToast(message, type = "success") {
     }, 3500);
 }
 
-form.addEventListener('submit', async (e) => {
+form2.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
 
-    submitBtn.disabled = true;
-    const originalHTML = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span class="loader-center"></span>`;
+    submitBtn2.disabled = true;
+    const originalHTML = submitBtn2.innerHTML;
+    submitBtn2.innerHTML = `<span class="loader-center"></span>`;
 
     try {
         const res = await fetch("/api/addContact.json", {
@@ -39,7 +39,7 @@ form.addEventListener('submit', async (e) => {
         if (res.ok) {
             showToast("¡Gracias por unirte! Te avisaremos lo mas pronto posible", "success");
             e.target.reset();
-            modal.style.display = "none";
+            modal2.style.display = "none";
         } else {
             const errorData = await res.json();
             console.error("Error de Brevo:", errorData);
@@ -50,7 +50,7 @@ form.addEventListener('submit', async (e) => {
         showToast("Error al conectar con el servidor.", "error");
     } finally {
 
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHTML;
+        submitBtn2.disabled = false;
+        submitBtn2.innerHTML = originalHTML;
     }
 });
