@@ -1,11 +1,20 @@
 const modal = document.getElementById('form-modal');
-document.getElementById('open-modal').onclick = () => modal.style.display = 'flex';
-document.getElementById('close-modal').onclick = () => modal.style.display = 'none';
+const openBtn = document.getElementById('open-modal');
+const closeBtn = document.getElementById('close-modal');
+const form = document.getElementById('waitlist-form');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+openBtn.onclick = () => modal.style.display = 'flex';
+closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; }
 
-document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.innerHTML = `<span class="loader"></span> Enviando...`;
 
     try {
         const res = await fetch("/api/addContact", {
@@ -13,6 +22,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async (e) =>
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
+
         if (res.ok) {
             alert("¡Gracias por unirte! Te avisaremos pronto 😄");
             e.target.reset();
@@ -25,5 +35,8 @@ document.getElementById('waitlist-form').addEventListener('submit', async (e) =>
     } catch (err) {
         console.error(err);
         alert("Error al conectar con el servidor.");
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
     }
 });

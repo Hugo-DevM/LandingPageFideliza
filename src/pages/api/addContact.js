@@ -1,44 +1,27 @@
+import { createContact } from "../../utils/brevo.js";
+
 export async function POST({ request }) {
-    const body = await request.json();
-    const { name, phone, preference } = body;
+    const data = await request.json();
 
-    try {
-        const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
-            method: "POST",
-            headers: {
-                accept: "application/json",
-                "content-type": "application/json",
-                "api-key": process.env.BREVO_API_KEY,
-            },
-            body: JSON.stringify({
-                email: `${phone}@fideliza.mx`,
-                attributes: {
-                    NOMBRE: name,
-                    TELEFONO: phone,
-                    SOFTWARE: preference,
-                },
-                listIds: [7],
-            }),
-        });
+    const contact = {
+        name: data.name,
+        phone: data.phone,
+        software: data.preference,
+        email: `${data.phone}@fideliza.mx`,
+        listIds: [7],
+    };
 
-        const data = await brevoResponse.json();
+    const response = await createContact(contact);
 
-        if (!brevoResponse.ok) {
-            return new Response(
-                JSON.stringify({ success: false, error: data.message }),
-                { status: brevoResponse.status }
-            );
-        }
-
+    if (response.status !== 201 && response.status !== 204) {
         return new Response(
-            JSON.stringify({ success: true, message: "Contacto agregado correctamente" }),
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error(error);
-        return new Response(
-            JSON.stringify({ success: false, error: "Error interno del servidor" }),
-            { status: 500 }
+            JSON.stringify({ success: false, message: response.message }),
+            { status: response.status, headers: { "Content-Type": "application/json" } }
         );
     }
+
+    return new Response(
+        JSON.stringify({ success: true, message: "Contacto agregado correctamente" }),
+        { status: 201, headers: { "Content-Type": "application/json" } }
+    );
 }
