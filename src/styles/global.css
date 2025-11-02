@@ -34,3 +34,7 @@ button {
 button:hover {
     background-color: #1426A3;
 }
+
+html {
+    scroll-behavior: smooth;
+}
