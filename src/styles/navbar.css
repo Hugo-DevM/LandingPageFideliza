@@ -40,21 +40,36 @@
     height: 60px;
 }
 
-
 .navbar-links a {
-    text-decoration: none;
+    position: relative;
+    display: inline-block;
     color: var(--color-primary);
     font-weight: 600;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 2px;
+    text-decoration: none;
     margin: 0 10px;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
 
+.navbar-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
 }
 
 .navbar-links a:hover {
     color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
+}
+
+.navbar-links a:hover::after {
+    width: 100%;
+    opacity: 1;
 }
 
 .navbar-btn {
