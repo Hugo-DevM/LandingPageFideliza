@@ -17,7 +17,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = `<span class="loader"></span> Enviando...`;
 
     try {
-        const res = await fetch("/api/addContact", {
+        const res = await fetch("/api/addContact.json", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
